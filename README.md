@@ -9,6 +9,8 @@ Web application to download content from Pinterest easily and for free.
 - Responsive design with TailwindCSS.
 - Built with Next.js and React.
 
+Preview: [pinterest.botzaku.eu.org](https://pinterest.botzaku.eu.org)
+
 ## Installation
 
 Follow these steps to set up the project locally:
