@@ -15,8 +15,9 @@ export default async function handler(
   }
 
   try {
-    const response = await fetch(`https://api.botzaku.eu.org/api/dl/pinterest?url=${url}`)
+    const response = await fetch(`https://pinterest-media-downloader.bjcoderx.workers.dev/?url=${url}`)
     const data = await response.json()
+
     return res.status(200).json(data)
   } catch (error) {
     return res.status(500).json({ success: false, error: 'Failed to fetch Pinterest content' })
