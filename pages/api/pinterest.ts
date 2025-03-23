@@ -18,15 +18,19 @@ export default async function handler(
     const response = await fetch(`https://pinterest-media-downloader.bjcoderx.workers.dev/?url=${url}`)
     const data = await response.json()
 
-    // API response ka format check karke sahi response dena
-    if (data.status && data.media_url) {
-      return res.status(200).json({
-        success: true,
-        media_url: data.media_url
-      })
-    } else {
-      return res.status(400).json({ success: false, error: 'Invalid response from Pinterest API' })
+    if (!data.status || !data.media_url) {
+      return res.status(500).json({ success: false, error: 'Invalid response from Pinterest API' })
     }
+
+    return res.status(200).json({
+      success: true,
+      message: "Successfully retrieved JPG content",
+      data: {
+        type: "JPG",
+        quality: "Original",
+        url: data.media_url
+      }
+    })
   } catch (error) {
     return res.status(500).json({ success: false, error: 'Failed to fetch Pinterest content' })
   }
